@@ -1,23 +1,35 @@
 //Rock,Paper,Scissors Game
+//let question = prompt("Want to play a game?");
 
-let question = prompt("Want to play a game?");
-if(question === yes)
+const computerChoices = ["rock","paper","scissors"];
+
+function computerPlay(computerChoices)
 {
-
-var  choices = ["rock","paper","scissors"];
-
-function computerPlay(playerSelection,computerSelection)
-{
-    let choiceQuestion = prompt("Rock,Paper,Scissors?");
-
-
+    return computerChoices[Math.floor(Math.random() * 3)];
 }
-elseif(question === no)
-{
-    console.log("Okay.");
-}
-else
-{
-    console.log("Error.");
-}
-}
+
+function singleRound(computerPlay)
+    {
+        let playerSelection = prompt("Rock, Paper, or Scissors?");
+        playerSelection = playerSelection.toLowerCase();
+
+        let computerSelection = computerPlay(computerChoices);
+
+        if(computerSelection === playerSelection)
+            {
+                alert("Tie! Both you and the computer picked the same value.")
+                return "Tie";
+            }
+        else if(playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock' || playerSelection === 'scissors' && computerSelection === 'paper')
+            {
+                alert("You win!");
+                return "Dub";
+            }
+        else
+            {
+                alert("Loser");
+                return "You lost";
+            }
+    }
+
+singleRound(computerPlay)
