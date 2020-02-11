@@ -52,8 +52,8 @@ function game()
 
 game();
 
-let computerScore = console.log("Computer: ", computerScore); // prints computer score
-let playerScore = console.log("Player: ", playerScore); // prints player score
+ computerScore = console.log("Computer: ", computerScore); // prints computer score
+ playerScore = console.log("Player: ", playerScore); // prints player score
 
 
 
