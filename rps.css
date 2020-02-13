@@ -1,10 +1,57 @@
-body
+*
 {
-    background-color: rgb(63, 145, 163);
-    font-size:  12px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body
+{
+    background-color: rgb(17, 122, 105));
+}
+header
+{
+    text-align: center;
+    background-color: white;
+    padding: 15px;
+}
 h1
 {
-    color: white;
+    color: black;
+    text-align: center;
+    font-size:  35px;
 }
+
+#container
+{
+   text-align: center;
+   padding: 20px;
+}
+.btn
+    {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        padding: 5px;
+    }
+
+    #rock
+    {
+        font-size:  20px;
+        padding: 25px 20px;
+        color: black;
+    }
+
+    #paper
+    {
+        font-size: 20px;
+        padding: 25px 20px;
+        color: black;
+    }
+
+    #scissors
+    {
+        font-size: 20px;
+        padding: 25px 20px;
+        color: black;
+    }
