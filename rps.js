@@ -5,22 +5,26 @@
 
 let playerScore = 0;
 let computerScore = 0;
-
 const computerChoices = ["rock","paper","scissors"];
 
+const buttons = document.querySelectorAll('btn');
+const rockButton = document.getElementById('#rock-button');
+const paperButton = document.getElementById('#paper-button');
+const scissorsButton = document.getElementById('#scissors-button');
+
 //randomizes computer choices
-function computerPlay(computerChoices)
+function computerPlay()
 {
+    let computerChoices = ["rock","paper","scissors"];
     return computerChoices[Math.floor(Math.random() * 3)];
 }
 
 //compares computer to user input
-function singleRound(computerPlay)
+function playRound(computerPlay)
     {
-        let playerSelection = prompt("Rock, Paper, or Scissors?");
-        playerSelection = playerSelection.toLowerCase();
 
-        let computerSelection = computerPlay(computerChoices);
+        let playerSelection = e.target.id;
+        let computerSelection = computerPlay();
 
         if(computerSelection === playerSelection)
             {
@@ -37,23 +41,3 @@ function singleRound(computerPlay)
                 computerScore++;
             }
         }
-
-
-// calls singleRound function five times
-function game()
-{
-         singleRound(computerPlay);
-         singleRound(computerPlay);
-         singleRound(computerPlay);
-         singleRound(computerPlay);
-         singleRound(computerPlay);
-
-}
-
-game();
-
- computerScore = console.log("Computer: ", computerScore); // prints computer score
- playerScore = console.log("Player: ", playerScore); // prints player score
-
-
-
