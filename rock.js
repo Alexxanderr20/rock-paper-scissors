@@ -15,9 +15,9 @@ function computerPlay()
 }
 
 //compares computer to user input
-function singleRound(playerChoice,computerChoice)
+function singleRound(playerChoice)
     {
-        let playerSelection = prompt("rock, paper, or scissors?");
+        let playerSelection = rockButton.id;
         let computerSelection = computerPlay();
 
         if(playerSelection === "rock" && computerSelection == "scissors"
@@ -40,10 +40,11 @@ function singleRound(playerChoice,computerChoice)
             }
             else
             {
-                alert("error.")
+                console.log("error.");
             }
         }
 
+        // counts up total score from game and determines winner
     function score()
     {
         if (playerScore > computerScore)
@@ -60,6 +61,7 @@ function singleRound(playerChoice,computerChoice)
             }
     }
 
+    //loops through singleRound function 5 times
     function game()
     {
             singleRound();
@@ -70,10 +72,42 @@ function singleRound(playerChoice,computerChoice)
             score();
     }
 
+
+    const rockButton = document.querySelector("#rock");
+        rockButton.addEventListener("click", (e) =>
+        {
+            singleRound(rockButton.id);
+        });
+
+    const paperButton = document.querySelector("#paper");
+        paperButton.addEventListener("click", (e) =>
+        {
+            singleRound(paperButton.id);
+        });
+
+    const scissorButton = document.querySelector("#scissors")
+        scissorButton.addEventListener("click", (e) =>
+        {
+            singleRound(scissorButton.id);
+        });
+        
+
+/*
+    const buttons = document.querySelectorAll("button");
+        buttons.forEach((buttons) =>
+        {
+            buttons.addEventListener("click", (e) => {
+                singleRound(buttons.id);
+            });
+        });
+
+*/
+
 //singleRound();
-game();
-console.log("Player Score: " + playerScore);
-console.log("Computer Score: " + computerScore);
+//game();
+console.log("Player Score: " + playerScore); // shows player score
+console.log("Computer Score: " + computerScore); // shows computer score
+//console.log(buttons);
 //console.log(computerPlay());
 
 
