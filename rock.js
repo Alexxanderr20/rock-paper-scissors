@@ -15,9 +15,9 @@ function computerPlay()
 }
 
 //compares computer to user input
-function singleRound(playerChoice)
+function singleRound(playerSelection)
     {
-        let playerSelection = rockButton.id;
+        //let playerSelection =  buttons;
         let computerSelection = computerPlay();
 
         if(playerSelection === "rock" && computerSelection == "scissors"
@@ -73,6 +73,20 @@ function singleRound(playerChoice)
     }
 
 
+    /*
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", (e) =>
+            {
+                //let playerSelection = (button.id);
+                singleRound(button.id);
+            });
+
+        });
+*/
+
+
     const rockButton = document.querySelector("#rock");
         rockButton.addEventListener("click", (e) =>
         {
@@ -90,7 +104,6 @@ function singleRound(playerChoice)
         {
             singleRound(scissorButton.id);
         });
-        
 
 /*
     const buttons = document.querySelectorAll("button");
