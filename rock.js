@@ -2,9 +2,13 @@
     Rock,Paper,Scissors Game
     Edward Alexander Munoz
 */
+    let playerScore = 0;
+    let computerScore = 0;
+    let pointsToWin = 0;
 
-let playerScore = 0;
-let computerScore = 0;
+    const playerTotal = document.getElementById("#playerTotal");
+    const computerTotal = document.getElementById("#computerTotal");
+    const finalTotal = document.getElementById("#finalTotal");
 
 //randomizes computer choices
 function computerPlay()
@@ -23,122 +27,121 @@ function singleRound(playerSelection)
         || playerSelection == "paper" && computerSelection == "rock"
         || playerSelection == "scissors" && computerSelection == "paper")
             {
-                //console.log("You win! " + playerSelection + " beats " + computerSelection);
-                const winMessage = document.querySelector("#win");
-                {
-                    const winText = document.createElement("p");
-
-                    winText.classList.add("p");
-                    winText.textContent = "You win! " + playerSelection + " beats " + computerSelection;
-
-                    winMessage.appendChild(winText);
-                }
-                return playerScore++;
+                return "win";
             }
         else if(playerSelection === "scissors" && computerSelection === "rock"
         || playerSelection === "paper" && computerSelection === "scissors"
         || playerSelection === "rock" && computerSelection === "paper")
             {
-                //console.log("You lose. " + computerSelection + " beats " + playerSelection);
-                const loseMessage = document.querySelector("#lose");
-                        {
-                            const loseText = document.createElement("p");
-
-                            loseText.classList.add("p");
-                            loseText.textContent = "You lose, " + computerSelection + " beats " + playerSelection;
-
-                            loseMessage.appendChild(loseText);
-                        }
-                return computerScore++;
+                return "lose";
             }
         else if(playerSelection == computerSelection)
             {
-                //console.log("Tie!");
-                const tieMessage = document.querySelector("#lose");
-                {
-                    const tieText = document.createElement("p");
-
-                    tieText.classList.add("p");
-                    tieText.textContent = "Tie, " + computerSelection + " is the same as " + playerSelection;
-
-                    tieMessage.appendChild(tieText);
-                }
-
+                return "tie";
             }
-            else
+    }
+
+        function score()
+        {
+            const roundResults = document.getElementById("roundResults");
+            const playerTotal = document.getElementById("playerTotal");
+            const computerTotal = document.getElementById("computerTotal");
+            const finalTotal = document.getElementById("finalTotal");
+
+            finalTotal.textContent = "";
+
+            roundResults.textContent = resultMsg;
+            playerTotal.textContent = "Player Score: " + playerScore;
+            computerTotal.textContent = "Computer Score: " + computerScore;
+
+            if(playerScore === 5)
             {
-                console.log("error");
+                finalTotal.textContent = `You win! You beat the computer ${playerScore} to ${computerScore}!`;
+                playerScore = 0;
+                computerScore = 0;
             }
+            else if(computerScore === 5)
+            {
+                finalTotal.textContent = `You lost! The computer beat you ${computerScore} to ${playerScore}`;
+                playerScore = 0;
+                computerScore = 0;
+            }
+
         }
 
-
-    //loops through singleRound function 5 times
-    function game(playerSelection)
-    {
-            singleRound(playerSelection);
-            //singleRound(playerSelection);
-            //singleRound(playerSelection);
-            //singleRound(playerSelection);
-            //singleRound(playerSelection);
-            //score();
-    }
-
-function score(pScore, cScore)
-{
-        if (playerScore == 5)
-            {
-                console.log("YOU WINNNNN");
-            }
-        else if(computerScore == 5)
-            {
-                console.log("you loseeeeeeeeeeee.");
-            }
-            else
-            {
-                console.log("draw.");
-            }
-}
-
-/*
-function results(playerSelection,computerSelection)
-{
-    const winMessage = document.querySelector("#win");
-    {
-        const winText = document.createElement("p");
-
-        winText.classList.add("p");
-        winText.textContent = "You win! " + playerSelection + " beats " + computerSelection;
-
-        winMessage.appendChild(winText);
-    }
-}
-*/
-
-function main(playerSelection,computerSelection)
-{
     const rockButton = document.querySelector("#rock");
         rockButton.addEventListener("click", (e) =>
         {
             singleRound(rockButton.id);
-            //results(playerSelection,computerSelection);
+            if(singleRound(rockButton.id) === "win")
+            {
+                playerScore++;
+                resultMsg = `You win! ${rockButton.id} beats ${computerPlay()}`;
+                score();
+            }
+            else if(singleRound(rockButton.id) === "lose")
+            {
+                computerScore++;
+                resultMsg = `You lose! ${computerPlay()} beats ${rockButton.id}`;
+                score();
+            }
+            else
+            {
+                resultMsg = `It's a draw. ${rockButton.id} ties ${computerPlay()}`;
+                score();
+            }
         });
+
 
     const paperButton = document.querySelector("#paper");
         paperButton.addEventListener("click", (e) =>
         {
             singleRound(paperButton.id);
+            if(singleRound(paperButton.id) === "win")
+            {
+                playerScore++;
+                resultMsg = `You win! ${paperButton.id} beats ${computerPlay()}`;
+                score();
+            }
+            else if(singleRound(paperButton.id) === "lose")
+            {
+                computerScore++;
+                resultMsg = `You lose! ${computerPlay()} beats ${paperButton.id}`;
+                score();
+            }
+            else
+            {
+                resultMsg = `It's a draw. ${paperButton.id} ties ${computerPlay()}`;
+                score();
+            }
         });
+
 
     const scissorButton = document.querySelector("#scissors")
         scissorButton.addEventListener("click", (e) =>
         {
             singleRound(scissorButton.id);
+            if(singleRound(scissorButton.id) === "win")
+        {
+            playerScore++;
+            resultMsg = `You win! ${scissorButton.id} beats ${computerPlay()}`;
+            score();
+        }
+        else if(singleRound(scissorButton.id) === "lose" )
+        {
+            computerScore++;
+            resultMsg = `You lose! ${computerPlay()} beats ${scissorButton.id}`;
+            score();
+        }
+        else
+        {
+            resultMsg = `It's a draw. ${scissorButton.id} ties ${computerPlay()}`;
+            score();
+        }
         });
 
-}
 
-
-main();
+//main();
 
 //console.log("Player Score: " + playerScore); // shows player score
 //console.log("Computer Score: " + computerScore); // shows computer score
