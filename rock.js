@@ -17,80 +17,110 @@ function computerPlay()
 //compares computer to user input
 function singleRound(playerSelection)
     {
-        //let playerSelection =  buttons;
         let computerSelection = computerPlay();
 
         if(playerSelection === "rock" && computerSelection == "scissors"
         || playerSelection == "paper" && computerSelection == "rock"
         || playerSelection == "scissors" && computerSelection == "paper")
             {
-                console.log("You win! " + playerSelection + " beats " + computerSelection);
-                playerScore++;
+                //console.log("You win! " + playerSelection + " beats " + computerSelection);
+                const winMessage = document.querySelector("#win");
+                {
+                    const winText = document.createElement("p");
+
+                    winText.classList.add("p");
+                    winText.textContent = "You win! " + playerSelection + " beats " + computerSelection;
+
+                    winMessage.appendChild(winText);
+                }
+                return playerScore++;
             }
         else if(playerSelection === "scissors" && computerSelection === "rock"
         || playerSelection === "paper" && computerSelection === "scissors"
         || playerSelection === "rock" && computerSelection === "paper")
             {
-                console.log("You lose. " + computerSelection + " beats " + playerSelection);
-                computerScore++;
+                //console.log("You lose. " + computerSelection + " beats " + playerSelection);
+                const loseMessage = document.querySelector("#lose");
+                        {
+                            const loseText = document.createElement("p");
+
+                            loseText.classList.add("p");
+                            loseText.textContent = "You lose, " + computerSelection + " beats " + playerSelection;
+
+                            loseMessage.appendChild(loseText);
+                        }
+                return computerScore++;
             }
         else if(playerSelection == computerSelection)
             {
-                console.log("Tie!");
+                //console.log("Tie!");
+                const tieMessage = document.querySelector("#lose");
+                {
+                    const tieText = document.createElement("p");
+
+                    tieText.classList.add("p");
+                    tieText.textContent = "Tie, " + computerSelection + " is the same as " + playerSelection;
+
+                    tieMessage.appendChild(tieText);
+                }
+
             }
             else
             {
-                console.log("error.");
+                console.log("error");
             }
         }
 
-        // counts up total score from game and determines winner
-    function score()
+
+    //loops through singleRound function 5 times
+    function game(playerSelection)
     {
-        if (playerScore > computerScore)
+            singleRound(playerSelection);
+            //singleRound(playerSelection);
+            //singleRound(playerSelection);
+            //singleRound(playerSelection);
+            //singleRound(playerSelection);
+            //score();
+    }
+
+function score(pScore, cScore)
+{
+        if (playerScore == 5)
             {
                 console.log("YOU WINNNNN");
             }
-        else if(computerScore > playerScore)
+        else if(computerScore == 5)
             {
-                console.log("you lost.");
+                console.log("you loseeeeeeeeeeee.");
             }
             else
             {
-                console.log("it's a tie.");
+                console.log("draw.");
             }
-    }
+}
 
-    //loops through singleRound function 5 times
-    function game()
+/*
+function results(playerSelection,computerSelection)
+{
+    const winMessage = document.querySelector("#win");
     {
-            singleRound();
-            singleRound();
-            singleRound();
-            singleRound();
-            singleRound();
-            score();
+        const winText = document.createElement("p");
+
+        winText.classList.add("p");
+        winText.textContent = "You win! " + playerSelection + " beats " + computerSelection;
+
+        winMessage.appendChild(winText);
     }
-
-
-    /*
-        const buttons = document.querySelectorAll("button");
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", (e) =>
-            {
-                //let playerSelection = (button.id);
-                singleRound(button.id);
-            });
-
-        });
+}
 */
 
-
+function main(playerSelection,computerSelection)
+{
     const rockButton = document.querySelector("#rock");
         rockButton.addEventListener("click", (e) =>
         {
             singleRound(rockButton.id);
+            //results(playerSelection,computerSelection);
         });
 
     const paperButton = document.querySelector("#paper");
@@ -105,22 +135,12 @@ function singleRound(playerSelection)
             singleRound(scissorButton.id);
         });
 
-/*
-    const buttons = document.querySelectorAll("button");
-        buttons.forEach((buttons) =>
-        {
-            buttons.addEventListener("click", (e) => {
-                singleRound(buttons.id);
-            });
-        });
+}
 
-*/
 
-//singleRound();
-//game();
-console.log("Player Score: " + playerScore); // shows player score
-console.log("Computer Score: " + computerScore); // shows computer score
-//console.log(buttons);
-//console.log(computerPlay());
+main();
+
+//console.log("Player Score: " + playerScore); // shows player score
+//console.log("Computer Score: " + computerScore); // shows computer score
 
 
