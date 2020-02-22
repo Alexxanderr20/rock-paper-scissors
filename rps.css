@@ -2,13 +2,13 @@
 {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    border-block: auto;
 }
-
 body
 {
-    background-color: rgb(17, 122, 105));
+    background-color: rgb(59, 172, 153);
 }
+
 header
 {
     text-align: center;
@@ -18,40 +18,55 @@ header
 h1
 {
     color: black;
+    background-color: rgb(59, 172, 153);
+    margin: -20px;
+    padding: 25px;
     text-align: center;
     font-size:  35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+p
+{
+    text-align: center;
+    font-size:  24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 #container
 {
    text-align: center;
    padding: 20px;
 }
-.btn
+.button
     {
         display: inline-block;
         width: 100px;
         height: 100px;
-        padding: 5px;
+        padding: 20px;
     }
 
     #rock
     {
-        font-size:  20px;
+        font-size:  25px;
         padding: 25px 20px;
         color: black;
     }
 
     #paper
     {
-        font-size: 20px;
+        font-size: 25px;
         padding: 25px 20px;
         color: black;
     }
 
     #scissors
     {
-        font-size: 20px;
+        font-size: 25px;
         padding: 25px 20px;
         color: black;
+    }
+
+    #totalScore
+    {
+        align-content: center;
     }
