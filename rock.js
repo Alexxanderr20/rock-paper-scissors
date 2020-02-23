@@ -2,6 +2,7 @@
     Rock,Paper,Scissors Game
     Edward Alexander Munoz
 */
+
     let playerScore = 0;
     let computerScore = 0;
     let pointsToWin = 0;
@@ -43,6 +44,7 @@ function singleRound(playerSelection)
 
         function score()
         {
+            //using DOM to select specific elements
             const roundResults = document.getElementById("roundResults");
             const playerTotal = document.getElementById("playerTotal");
             const computerTotal = document.getElementById("computerTotal");
@@ -54,6 +56,7 @@ function singleRound(playerSelection)
             playerTotal.textContent = "Player Score: " + playerScore;
             computerTotal.textContent = "Computer Score: " + computerScore;
 
+            //outputs final score to screen and resets the score back to 0
             if(playerScore === 5)
             {
                 finalTotal.textContent = `You win! You beat the computer ${playerScore} to ${computerScore}!`;
@@ -68,7 +71,7 @@ function singleRound(playerSelection)
             }
 
         }
-
+        //uses DOM to allow users to use on-screen buttons to run program
     const rockButton = document.querySelector("#rock");
         rockButton.addEventListener("click", (e) =>
         {
@@ -92,7 +95,7 @@ function singleRound(playerSelection)
             }
         });
 
-
+        //same as line 74
     const paperButton = document.querySelector("#paper");
         paperButton.addEventListener("click", (e) =>
         {
@@ -116,7 +119,7 @@ function singleRound(playerSelection)
             }
         });
 
-
+        //same as line 74
     const scissorButton = document.querySelector("#scissors")
         scissorButton.addEventListener("click", (e) =>
         {
@@ -139,11 +142,5 @@ function singleRound(playerSelection)
             score();
         }
         });
-
-
-//main();
-
-//console.log("Player Score: " + playerScore); // shows player score
-//console.log("Computer Score: " + computerScore); // shows computer score
 
 
