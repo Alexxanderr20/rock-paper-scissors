@@ -7,6 +7,9 @@
     let computerScore = 0;
     let pointsToWin = 0;
 
+    const rock = document.querySelector("#rock");
+    const paper = document.querySelector("#paper");
+    const scissors = document.querySelector("#scissors");
     const playerTotal = document.getElementById("#playerTotal");
     const computerTotal = document.getElementById("#computerTotal");
     const finalTotal = document.getElementById("#finalTotal");
@@ -14,33 +17,78 @@
 //randomizes computer choices
 function computerPlay()
 {
-    const computerChoices = ["rock","paper","scissors"];
+    //const computerChoices = ["rock","paper","scissors"];
+    let computerChoices = ["rock", "paper", "scissors"];
     let computerSelection = computerChoices[Math.floor(Math.random() * 3)];
     return computerSelection;
 }
 
 //compares computer to user input
-function singleRound(playerSelection)
+function singleRound(playerSelection,computerSelection)
     {
-        let computerSelection = computerPlay();
+        switch(playerSelection)
+        {
+            case "rock":
+                if(computerSelection === "scissors")
+                    {
+                        resultMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+                        playerScore++;
+                        score();
+                    }
+                else if(computerSelection === "paper")
+                {
+                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                    computerScore++;
+                    score();
+                }
+                else
+                {
+                    resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
+                    score();
+                }
+                break;
 
-        if(playerSelection === "rock" && computerSelection == "scissors"
-        || playerSelection == "paper" && computerSelection == "rock"
-        || playerSelection == "scissors" && computerSelection == "paper")
-            {
-                return "win";
-            }
-        else if(playerSelection === "scissors" && computerSelection === "rock"
-        || playerSelection === "paper" && computerSelection === "scissors"
-        || playerSelection === "rock" && computerSelection === "paper")
-            {
-                return "lose";
-            }
-        else if(playerSelection == computerSelection)
-            {
-                return "tie";
-            }
+            case "paper":
+                if(computerSelection === "rock")
+                    {
+                        resultMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+                        playerScore++;
+                        score();
+                    }
+                else if(computerSelection === "scissors")
+                {
+                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                    computerScore++;
+                    score();
+                }
+                else
+                {
+                    resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
+                    score();
+                }
+                break;
+
+            case "scissors":
+                if(computerSelection === "paper")
+                    {
+                        resultMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+                        playerScore++;
+                        score();
+                    }
+                else if(computerSelection === "rock")
+                {
+                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                    computerScore++;
+                    score();
+                }
+                else
+                    {
+                        resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
+                    }
+                break;
+        }
     }
+
 
         function score()
         {
@@ -71,76 +119,31 @@ function singleRound(playerSelection)
             }
 
         }
-        //uses DOM to allow users to use on-screen buttons to run program
-    const rockButton = document.querySelector("#rock");
-        rockButton.addEventListener("click", (e) =>
+
+        function roundResults(playerSelection)
         {
-            singleRound(rockButton.id);
-            if(singleRound(rockButton.id) === "win")
+            if(singleRound(playerSelection) === "win")
             {
                 playerScore++;
-                resultMsg = `You win! ${rockButton.id} beats ${computerPlay()}`;
+                resultMsg = `You win! ${playerSelection} beats ${computerPlay()}`;
                 score();
             }
-            else if(singleRound(rockButton.id) === "lose")
+            else if(singleRound(playerSelection) === "lose")
             {
                 computerScore++;
-                resultMsg = `You lose! ${computerPlay()} beats ${rockButton.id}`;
+                resultMsg = `You lose. ${playerSelection} loses to ${computerPlay()}`;
                 score();
             }
-            else
+            else if (singleRound(playerSelection) === "tie")
             {
-                resultMsg = `It's a draw. ${rockButton.id} ties ${computerPlay()}`;
+                resultMsg = `It's a draw.`; //${playerSelection} ties ${computerPlay()}`;
                 score();
             }
-        });
-
-        //same as line 74
-    const paperButton = document.querySelector("#paper");
-        paperButton.addEventListener("click", (e) =>
-        {
-            singleRound(paperButton.id);
-            if(singleRound(paperButton.id) === "win")
-            {
-                playerScore++;
-                resultMsg = `You win! ${paperButton.id} beats ${computerPlay()}`;
-                score();
-            }
-            else if(singleRound(paperButton.id) === "lose")
-            {
-                computerScore++;
-                resultMsg = `You lose! ${computerPlay()} beats ${paperButton.id}`;
-                score();
-            }
-            else
-            {
-                resultMsg = `It's a draw. ${paperButton.id} ties ${computerPlay()}`;
-                score();
-            }
-        });
-
-        //same as line 74
-    const scissorButton = document.querySelector("#scissors")
-        scissorButton.addEventListener("click", (e) =>
-        {
-            singleRound(scissorButton.id);
-            if(singleRound(scissorButton.id) === "win")
-        {
-            playerScore++;
-            resultMsg = `You win! ${scissorButton.id} beats ${computerPlay()}`;
-            score();
         }
-        else if(singleRound(scissorButton.id) === "lose" )
-        {
-            computerScore++;
-            resultMsg = `You lose! ${computerPlay()} beats ${scissorButton.id}`;
-            score();
-        }
-        else
-        {
-            resultMsg = `It's a draw. ${scissorButton.id} ties ${computerPlay()}`;
-            score();
-        }
-        });
 
 
+
+
+rock.addEventListener("click", () => singleRound("rock", computerPlay()));
+paper.addEventListener("click", () => singleRound("paper", computerPlay()));
+scissors.addEventListener("click", () => singleRound("scissors", computerPlay()));
