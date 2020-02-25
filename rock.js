@@ -5,8 +5,8 @@
 
     let playerScore = 0;
     let computerScore = 0;
-    let pointsToWin = 0;
 
+    //selecting DOM containers for input
     const rock = document.querySelector("#rock");
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
@@ -14,16 +14,21 @@
     const computerTotal = document.getElementById("#computerTotal");
     const finalTotal = document.getElementById("#finalTotal");
 
-//randomizes computer choices
-function computerPlay()
-{
-    //const computerChoices = ["rock","paper","scissors"];
-    let computerChoices = ["rock", "paper", "scissors"];
-    let computerSelection = computerChoices[Math.floor(Math.random() * 3)];
-    return computerSelection;
-}
+    //creating Event Listeners
+    rock.addEventListener("click", () => singleRound("rock", computerPlay()));
+    paper.addEventListener("click", () => singleRound("paper", computerPlay()));
+    scissors.addEventListener("click", () => singleRound("scissors", computerPlay()));
 
-//compares computer to user input
+    //randomizes computer choices
+    function computerPlay()
+    {
+        //const computerChoices = ["rock","paper","scissors"];
+        let computerChoices = ["rock", "paper", "scissors"];
+        let computerSelection = computerChoices[Math.floor(Math.random() * 3)];
+        return computerSelection;
+    }
+
+//compares computer selection to user input based on buttons
 function singleRound(playerSelection,computerSelection)
     {
         switch(playerSelection)
@@ -36,16 +41,16 @@ function singleRound(playerSelection,computerSelection)
                         score();
                     }
                 else if(computerSelection === "paper")
-                {
-                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
-                    computerScore++;
-                    score();
-                }
+                    {
+                        resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                        computerScore++;
+                        score();
+                    }
                 else
-                {
-                    resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
-                    score();
-                }
+                    {
+                        resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
+                        score();
+                    }
                 break;
 
             case "paper":
@@ -56,16 +61,16 @@ function singleRound(playerSelection,computerSelection)
                         score();
                     }
                 else if(computerSelection === "scissors")
-                {
-                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
-                    computerScore++;
-                    score();
-                }
+                    {
+                        resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                        computerScore++;
+                        score();
+                    }
                 else
-                {
-                    resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
-                    score();
-                }
+                    {
+                        resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
+                        score();
+                    }
                 break;
 
             case "scissors":
@@ -76,11 +81,11 @@ function singleRound(playerSelection,computerSelection)
                         score();
                     }
                 else if(computerSelection === "rock")
-                {
-                    resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
-                    computerScore++;
-                    score();
-                }
+                    {
+                        resultMsg = `You lose. ${playerSelection} loses to ${computerSelection}`;
+                        computerScore++;
+                        score();
+                    }
                 else
                     {
                         resultMsg = `It's a tie. ${playerSelection} ties ${computerSelection}`;
@@ -88,8 +93,6 @@ function singleRound(playerSelection,computerSelection)
                 break;
         }
     }
-
-
         function score()
         {
             //using DOM to select specific elements
@@ -117,33 +120,4 @@ function singleRound(playerSelection,computerSelection)
                 playerScore = 0;
                 computerScore = 0;
             }
-
         }
-
-        function roundResults(playerSelection)
-        {
-            if(singleRound(playerSelection) === "win")
-            {
-                playerScore++;
-                resultMsg = `You win! ${playerSelection} beats ${computerPlay()}`;
-                score();
-            }
-            else if(singleRound(playerSelection) === "lose")
-            {
-                computerScore++;
-                resultMsg = `You lose. ${playerSelection} loses to ${computerPlay()}`;
-                score();
-            }
-            else if (singleRound(playerSelection) === "tie")
-            {
-                resultMsg = `It's a draw.`; //${playerSelection} ties ${computerPlay()}`;
-                score();
-            }
-        }
-
-
-
-
-rock.addEventListener("click", () => singleRound("rock", computerPlay()));
-paper.addEventListener("click", () => singleRound("paper", computerPlay()));
-scissors.addEventListener("click", () => singleRound("scissors", computerPlay()));
