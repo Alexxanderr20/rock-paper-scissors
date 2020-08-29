@@ -4,17 +4,17 @@
     padding: 0;
     border-block: auto;
 }
+
 body
 {
-    background-color: rgb(59, 172, 153);
+    background-color: black;
 }
 
 header
 {
-    text-align: center;
-    background-color: white;
     padding: 15px;
 }
+
 h1
 {
     color: black;
@@ -26,47 +26,35 @@ h1
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-p
+/* p
 {
     text-align: center;
     font-size:  24px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-#container
+} */
+
+#button-container
 {
-   text-align: center;
-   padding: 20px;
+    display: center;
+    text-align: center;
+    padding-top: 10rem;
+    height: 2rem;
 }
-.button
+.buttons
     {
-        display: inline-block;
-        width: 100px;
-        height: 100px;
-        padding: 20px;
+        height: 5rem;
+        width: 9rem;
+        margin: 1rem;
+        font-size: 1.5rem;
+        border-radius: 1rem;
     }
 
-    #rock
-    {
-        font-size:  25px;
-        padding: 25px 20px;
-        color: black;
-    }
+#gameTotal
+{
 
-    #paper
-    {
-        font-size: 25px;
-        padding: 25px 20px;
-        color: black;
-    }
-
-    #scissors
-    {
-        font-size: 25px;
-        padding: 25px 20px;
-        color: black;
-    }
-
-    #totalScore
-    {
-        align-content: center;
-    }
+    display: block;
+    margin-top: 8rem;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
