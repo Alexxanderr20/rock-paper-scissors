@@ -1,13 +1,17 @@
 
 body
 {
-    background-color: rgba(24, 30, 24, 1);}
+    background-color: rgba(24, 30, 24, 1);
+}
 
 header
 {
     text-align: center;
 }
 
+/*
+changes scoreboard on very top of screen
+*/
 #scores
 {
     border: white solid 0.25rem;
@@ -27,7 +31,6 @@ header
     height: 2rem;
     font-size: 1.5rem;
     text-align: center;
-    /* background-color: red; */
 }
 
 #computerTotal
@@ -35,13 +38,10 @@ header
     height: 2rem;
     font-size: 1.5rem;
     text-align: center;
-    /* background-color: green; */
 }
 
 #roundResults
 {
-    /* background-color: salmon; */
-    /* border: red solid 1rem; */
     display: block;
     text-align: center;
     color: white;
@@ -54,7 +54,6 @@ header
 #button-container
 {
     background-color: rgb(85, 85, 85);
-    /* border: white dashed 0.25rem; */
     border-style: inset;
     height: 20rem;
     text-align: center;
